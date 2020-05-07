@@ -1,0 +1,64 @@
+@function rem($pixels, $context: $mainFontSize) {
+    @if(unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @if(unitless($context)) {
+        $context: $context * 1px;
+    }
+
+    @return $pixels / $context * 1rem;
+}
+
+//size(400, 300);
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+@mixin primaryBtn {
+    border: none;
+    display: block;
+    @include size(214px, 46px);
+    margin-top: 35px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: $btnMainColor;
+    transition: background-color 0.15s;
+    &:hover {
+        background-color: $btnFocusedColor;
+    }
+}
+
+@mixin orderBtn {
+    border: none;
+    @include size(164px, 37px);
+    font-size: $mainFontSize;
+    color: $mainColor;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid $mainColor;
+    transition: background-color 0.15s, color 0.15s;
+    &:hover {
+        color: white;
+        background-color: $mainColor;
+    }
+}
+
+@mixin flatElement {
+    position: absolute;
+    font-weight: bold;
+    background: linear-gradient(to right top, #ff8b5d, #ff2f96);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: top 1s ease-out, left 1s ease-out, transform 1s ease-out, font-size 1s ease-out;
+}
+
+@mixin placeholder {
+    ::-webkit-input-placeholder {@content}
+    :-moz-placeholder {@content}
+    ::-moz-placeholder {@content}
+    :-ms-input-placeholder {@content}
+}

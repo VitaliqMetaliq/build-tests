@@ -1,0 +1,32 @@
+//fonts here
+@font-face {
+    font-family: "Roboto-Bold";
+    src: url('/assets/fonts/roboto-v20-latin_cyrillic-700.woff') format('woff');
+    src: url('/assets/fonts/roboto-v20-latin_cyrillic-700.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: "Roboto-Black";
+    src: url('/assets/fonts/roboto-v20-latin_cyrillic-900.woff') format('woff');
+    src: url('/assets/fonts/roboto-v20-latin_cyrillic-900.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: "Roboto-Medium";
+    src: url('/assetsfonts/roboto-v20-latin_cyrillic-500.woff') format('woff');
+    src: url('/assets/fonts/roboto-v20-latin_cyrillic-500.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url('/assets/fonts/roboto-v20-latin_cyrillic-regular.woff') format('woff');
+    src: url('/assets/fonts/roboto-v20-latin_cyrillic-regular.woff2') format('woff2');
+}
+
+// @font-face {
+//     font-family: 'Font Awesome 5 Free';
+//     font-style: normal;
+//     font-weight: 900;
+//     font-display: block;
+//     src: url("/assets/fonts/webfonts/fa-solid-900.eot");
+//     src: url("/assets/fonts/webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/webfonts/fa-solid-900.woff2") format("woff2"), url("/assets/fonts/webfonts/fa-solid-900.woff") format("woff"), url("/assets/fonts/webfonts/fa-solid-900.ttf") format("truetype"), url("/assets/fonts/webfonts/fa-solid-900.svg#fontawesome") format("svg"); }
