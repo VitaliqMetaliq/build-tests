@@ -7,6 +7,10 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 const App = (props) => {
+    let code = localStorage.getItem('unsplash_access_key');
+    if(code) {
+        props.setAuthThunk(code);
+    }
     return (
         <BrowserRouter>
         {props.isAuth? null: <Redirect to='/auth'/>}
@@ -31,4 +35,15 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default compose (withRouter, connect(mapStateToProps, ))(App);
+let mapDispatchToProps = (dispatch) => {
+    return {
+        // redirForAuth: () => {
+        //     dispatch(redirForAuth());
+        // }, 
+        setAuthThunk: (token) => {
+            dispatch(setAuthThunk(token));
+        }
+    }
+}
+
+export default compose (withRouter, connect(mapStateToProps, mapDispatchToProps))(App);

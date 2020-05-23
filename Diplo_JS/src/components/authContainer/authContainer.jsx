@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 const AuthContainer = (props) => {
     let authCode = location.search.split('code=')[1];
     if(authCode) {
-        props.setAuthCode(authCode);
+        props.getAuthCode(authCode);
     }
     return(
         // <> {props.isAuth ? null : <Preloader />}
@@ -50,7 +50,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setAuthCode: (code) => {
+        getAuthCode: (code) => {
             dispatch(getAuthThunk(code));
         }, 
         redirForAuth: () => {

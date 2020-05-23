@@ -1,8 +1,8 @@
 import Unsplash, { toJson } from 'unsplash-js';
 
 const unsplash = new Unsplash({
-    accessKey: "my_access_key",
-    secret: "my_secret",
+    accessKey: "OFdR8Rw3yS0wAvT8AlyRmkf5FX9oLBo5JZgpwUyQUps",
+    secret: "CRV8fKylwYYQc0vtkQlNPBg6M5WGeDFam0uwwS6jrWI",
     callbackUrl: "http://vqportal.ru/auth",
     headers: {
         "Accept-Version": "v1"
@@ -52,6 +52,10 @@ export const AuthAPI = {
             .then(toJson)
             .then(json => {
                 unsplash.auth.setBearerToken(json.access_token);
+                localStorage.setItem("unsplash_access_key", json.access_token);
             });
+    }, 
+    setAuthCodeFromLs(token) {
+        return unsplash.auth.setBearerToken(token);
     }
 }

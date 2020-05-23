@@ -28,6 +28,11 @@ export const getAuthThunk = (code) => (dispatch) => {
     })
 }
 
+export const setAuthThunk = (code) => (dispatch) => {
+    AuthAPI.setAuthCodeFromLs(code);
+    dispatch(setAuthState(true));
+}
+
 export const redirForAuth = () => {
     AuthAPI.redirForAuth();
 }
