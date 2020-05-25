@@ -19,7 +19,7 @@ const PhotoViewerContainer = (props) => {
         if(photoId) {
             props.setViewPhoto(photoId);
         }
-    }, [props.viewPhoto.id])
+    }, [props.viewPhoto])
     return(
         <div>
             {props.viewPhoto ? 
@@ -57,5 +57,5 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
     withRouter,
     connect(mapStateToProps, mapDispatchToProps),
-    withAuthRedirect
+    // withAuthRedirect
 )(PhotoViewerContainer)

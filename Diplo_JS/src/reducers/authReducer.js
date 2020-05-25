@@ -37,4 +37,15 @@ export const redirForAuth = () => {
     AuthAPI.redirForAuth();
 }
 
+export const initApp = () => (dispatch) => {
+    let token = localStorage.getItem('unsplash_access_key');
+    if(token) {
+        AuthAPI.setAuthCodeFromLs(token);
+        dispatch(setAuthState(true));
+        
+    } else {
+        AuthAPI.redirForAuth();
+    }
+}
+
 export default authReducer;

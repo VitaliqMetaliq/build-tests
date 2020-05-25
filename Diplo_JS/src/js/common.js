@@ -5,28 +5,32 @@ import PhotoViewerContainer from '../components/PhotoViewer/PhotoViewerContainer
 import AuthContainer from '../components/authContainer/authContainer';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { setAuthThunk, initApp } from '../reducers/authReducer';
 
-const App = (props) => {
-    let code = localStorage.getItem('unsplash_access_key');
-    if(code) {
-        props.setAuthThunk(code);
+class App extends React.Component {
+
+    componentDidMount() {
+        this.props.initApp();
     }
-    return (
-        <BrowserRouter>
-        {props.isAuth? null: <Redirect to='/auth'/>}
-            <div className={"app-wrapper-content"}>
-                <Route path='/main' render={() => {
-                    return <PostsContainer />
-                }} />
-                <Route path='/view/:id?' render={() => {
-                    return (<PhotoViewerContainer />)
-                }} />
-                <Route path='/auth' render={() => {
-                    return (<AuthContainer />)
-                }} />
-            </div>
-        </BrowserRouter>
-    );
+
+    render() {
+        return (
+            <BrowserRouter>
+                {this.props.isAuth ? <Redirect to='/main' /> : null}
+                <div className={"app-wrapper-content"}>
+                    <Route path='/main' render={() => {
+                        return <PostsContainer />
+                    }} />
+                    <Route path='/view/:id?' render={() => {
+                        return (<PhotoViewerContainer />)
+                    }} />
+                    <Route path='/auth' render={() => {
+                        return (<AuthContainer />)
+                    }} />
+                </div>
+            </BrowserRouter>
+        );
+    }
 }
 
 let mapStateToProps = (state) => {
@@ -42,6 +46,9 @@ let mapDispatchToProps = (dispatch) => {
         // }, 
         setAuthThunk: (token) => {
             dispatch(setAuthThunk(token));
+        }, 
+        initApp: () => {
+            dispatch(initApp());
         }
     }
 }

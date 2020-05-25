@@ -105,7 +105,10 @@ export const setViewPhoto = (id) => {
 
 export const unlikePostThunk = (id) => (dispatch) => {
     dispatch(toggleIsFetching(true));
-    PhotoAPI.unlikePost(id).then(() => {
+    PhotoAPI.unlikePost(id).then((json) => {
+        if(json.errors) {
+            AuthAPI.redirForAuth();
+        }
         dispatch(toggleIsFetching(false));
         dispatch(unlikeAction(false));
     })
@@ -113,15 +116,21 @@ export const unlikePostThunk = (id) => (dispatch) => {
 
 export const likePostThunk = (id) => (dispatch) => {
     dispatch(toggleIsFetching(true));
-    PhotoAPI.likePost(id).then((photo) => {
+    PhotoAPI.likePost(id).then((json) => {
+        if(json.errors) {
+            AuthAPI.redirForAuth();
+        }
         dispatch(toggleIsFetching(false));
-        dispatch(likeAction(photo.likes, true));
+        dispatch(likeAction(json.photo.likes, true));
     })
 }
 
 export const getLatestPhotosList = (page) => (dispatch) => {
     dispatch(toggleIsFetching(true));
     PhotoAPI.getPhotosList(page).then(photosList => {
+        if(photosList.errors) {
+            AuthAPI.redirForAuth();
+        }
         let postArr = photosList.map(post => {
             return {
                 id: post.id,

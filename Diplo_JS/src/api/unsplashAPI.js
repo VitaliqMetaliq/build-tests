@@ -33,7 +33,7 @@ export const PhotoAPI = {
     likePost(id) {
         return unsplash.photos.likePhoto(id)
         .then(toJson)
-        .then(json => json.photo)
+        .then(json => json)
     }, 
     unlikePost(id) {
         return unsplash.photos.unlikePhoto(id)
